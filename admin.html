@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Ava Sterling Photography</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="admin-wrap">
+
+  <!-- LOGIN / CONNECT PANEL -->
+  <div id="loginPanel">
+    <h1>Portfolio Admin</h1>
+    <p class="sub">Connect once to this site's GitHub repository. Your details stay only in this browser.</p>
+    <div class="panel">
+      <label for="ghOwner">GitHub username / organization</label>
+      <input type="text" id="ghOwner" placeholder="e.g. avasterling">
+
+      <label for="ghRepo">Repository name</label>
+      <input type="text" id="ghRepo" placeholder="e.g. avasterling.github.io">
+
+      <label for="ghBranch">Branch</label>
+      <input type="text" id="ghBranch" placeholder="main" value="main">
+
+      <label for="ghToken">Access token</label>
+      <input type="password" id="ghToken" placeholder="Paste your token here">
+
+      <button id="connectBtn">Connect</button>
+      <div class="status-msg" id="loginStatus"></div>
+    </div>
+  </div>
+
+  <!-- MAIN ADMIN PANEL (shown once connected) -->
+  <div id="mainPanel" style="display:none;">
+    <div class="logout-row">
+      <button class="secondary" id="disconnectBtn">Disconnect</button>
+    </div>
+    <h1>Manage Photos</h1>
+    <p class="sub">Uploads, edits, and deletions publish straight to the live site. Changes can take a minute or two to appear.</p>
+
+    <div class="panel">
+      <h2>Upload a New Photo</h2>
+      <form id="uploadForm">
+        <label>Photo file</label>
+        <div class="dropzone" id="dropzone">
+          <span id="dropzoneText">Click to choose an image, or drag one here</span>
+          <img class="preview" id="preview">
+          <input type="file" id="fileInput" accept="image/*">
+        </div>
+
+        <label for="title">Title</label>
+        <input type="text" id="title" placeholder="e.g. Golden Hour, Big Sur" required>
+
+        <label for="alt">Alt text (for accessibility &amp; SEO)</label>
+        <input type="text" id="alt" placeholder="Describe the image plainly, e.g. Woman walking on a cliffside trail at sunset" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="A short caption shown on hover and in the lightbox"></textarea>
+
+        <button type="submit" id="uploadBtn">Upload Photo</button>
+        <div class="status-msg" id="uploadStatus"></div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>Current Photos</h2>
+      <ul class="admin-list" id="photoList"></ul>
+      <div class="status-msg" id="listStatus"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
